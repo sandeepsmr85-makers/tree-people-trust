@@ -18,7 +18,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(247,246,239,.92);backdro
 nav{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:650;color:#43544b}
 nav a:hover{color:var(--green2)}.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:white;padding:12px 19px;border-radius:999px;font-size:14px;font-weight:750;transition:.2s}
 .nav-cta:hover,.btn:hover{background:var(--green2);transform:translateY(-1px)}
-.menu{display:none;border:0;background:none;font-size:25px;color:var(--green)}
+.menu{display:none;border:0;background:none;font-size:25px;color:var(--green);cursor:pointer}
 .hero{padding:74px 0 66px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#e8efdc;color:var(--green2);border-radius:999px;padding:7px 12px;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
@@ -61,12 +61,41 @@ h2{font-size:clamp(30px,4vw,45px);letter-spacing:-1.7px;line-height:1.12;color:v
 .details{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 22px}
 .detail{background:#f5f6f0;border-radius:13px;padding:12px}.detail small{display:block;color:#7b887f;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:800}.detail b{font-size:13px;color:var(--green)}
 .event-card .btn{width:100%}
+.chess-extra{margin-top:42px}
+.chess-extra>h3{color:white;font-size:27px;text-align:center;margin:0 0 20px}
+.chess-table-wrap{overflow-x:auto;background:white;border-radius:15px}
+.chess-table{width:100%;border-collapse:collapse;color:#18251f;text-align:center;font-size:14px}
+.chess-table th{background:#d8ed9b;color:#123d32;padding:15px 10px}
+.chess-table td{padding:13px 10px;border-bottom:1px solid #e5e7dd;font-weight:650}
+.chess-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.chess-info,.chess-registration{background:white;color:#18251f;border-radius:20px;padding:25px}
+.chess-info h3,.chess-registration h3{color:#123d32;margin-top:0;font-size:21px}
+.chess-info ul{padding-left:20px;margin-bottom:0}
+.chess-info li{margin-bottom:9px;color:#43544b}
+.chess-info li:last-child{color:#b51f1f;font-weight:850}
+.guests p{color:#43544b;margin:10px 0}
+.guests p strong{color:#a51e24;font-size:17px}
+.guests hr{border:0;border-top:1px solid #e5e7dd;margin:16px 0}
+.chess-registration{margin-top:22px}
+.registration-contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.registration-contacts p{background:#edf3e4;padding:16px;border-radius:13px;margin:0}
+.registration-contacts strong{display:block;color:#123d32;margin-bottom:7px}
+.registration-contacts a{color:#1d604b;font-weight:800}
+.registration-note{color:#a51e24;font-weight:750;margin-bottom:0}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .contact-box{background:white;border:1px solid #e8eadf;border-radius:22px;padding:25px}
 .contact-box p{margin:7px 0;color:var(--muted);font-size:14px}
 footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot strong{color:white}
-@media(max-width:800px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;gap:18px;border-bottom:1px solid #e5e7dd}.nav.open nav{display:flex}.menu{display:block}.nav-cta{display:none}.hero{padding:48px 0}.hero-grid,.about-grid,.event-grid,.contact{grid-template-columns:1fr}.hero-art{min-height:350px}.cards{grid-template-columns:1fr}.section{padding:58px 0}.about-grid{gap:25px}.event-grid{gap:24px}.foot{flex-direction:column;align-items:flex-start}}
+@media(max-width:800px){
+ nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;gap:18px;border-bottom:1px solid #e5e7dd}
+ .nav.open nav{display:flex}.menu{display:block}.nav-cta{display:none}
+ .hero{padding:48px 0}.hero-grid,.about-grid,.event-grid,.contact{grid-template-columns:1fr}
+ .hero-art{min-height:350px}.cards{grid-template-columns:1fr}.section{padding:58px 0}
+ .about-grid{gap:25px}.event-grid{gap:24px}.foot{flex-direction:column;align-items:flex-start}
+ .chess-info-grid{grid-template-columns:1fr}.registration-contacts{grid-template-columns:1fr}
+ .chess-table{min-width:560px}
+}
 @media(min-width:801px) and (max-width:1000px){nav{gap:15px}.hero-grid{gap:28px}}
 </style>
 </head>
@@ -113,20 +142,70 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
  </div>
 </section>
 <section class="event" id="events">
- <div class="wrap event-grid">
-  <div><span class="kicker">Coming up next</span><h2>Think ahead.<br>Make your move.</h2><p>Get ready for an exciting chess competition organised by Tree People Charitable Trust. Bring your focus, strategy and sporting spirit to the board.</p></div>
-  <article class="event-card">
-   <div class="event-top"><span class="pill">Upcoming competition</span><span class="chess">♟️</span></div>
-   <h3>Tree People Chess Competition</h3>
-   <p>A celebration of strategy, patience and friendly competition. Join us for a day of chess and community spirit.</p>
-   <div class="details">
-    <div class="detail"><small>Date</small><b>To be announced</b></div>
-    <div class="detail"><small>Venue</small><b>To be announced</b></div>
-    <div class="detail"><small>Registration</small><b>Opening soon</b></div>
-    <div class="detail"><small>Entry details</small><b>Coming soon</b></div>
+ <div class="wrap">
+  <div class="event-grid">
+   <div>
+    <span class="kicker">29 November 2026 · Sathyamangalam</span>
+    <h2>Think ahead.<br>Make your move.</h2>
+    <p>Tree People Charitable Trust proudly presents the Grand Chess Tournament 2026. An exciting opportunity for young chess players to showcase their talent, strategy and sportsmanship.</p>
+    <p><strong>Separate competitions for boys and girls across three age categories.</strong></p>
    </div>
-   <a class="btn" href="#contact">Enquire about registration ↗</a>
-  </article>
+   <article class="event-card">
+    <div class="event-top"><span class="pill">Grand Chess Tournament 2026</span><span class="chess">♟️</span></div>
+    <h3>Tree People Grand Chess Tournament</h3>
+    <p>A celebration of intelligence, strategy and young talent.</p>
+    <div class="details">
+     <div class="detail"><small>Date</small><b>29 November 2026 (Sunday)</b></div>
+     <div class="detail"><small>Time</small><b>8:45 AM</b></div>
+     <div class="detail"><small>Venue</small><b>Raghavendra School, Sathyamangalam</b></div>
+     <div class="detail"><small>Entry Fee</small><b>₹250</b></div>
+     <div class="detail"><small>Last Date</small><b>28 November 2026</b></div>
+     <div class="detail"><small>Spot Entry</small><b>Not Available</b></div>
+    </div>
+    <a class="btn" href="#chess-registration">Contact for Registration ↗</a>
+   </article>
+  </div>
+  <div class="chess-extra">
+   <h3>Age Categories &amp; Prizes</h3>
+   <div class="chess-table-wrap">
+    <table class="chess-table">
+     <thead><tr><th>Category</th><th>Date of Birth</th><th>Boys' Prizes</th><th>Girls' Prizes</th></tr></thead>
+     <tbody>
+      <tr><td>Under 09</td><td>Born on or after 01.01.2017</td><td>20</td><td>15</td></tr>
+      <tr><td>Under 12</td><td>Born on or after 01.01.2014</td><td>20</td><td>15</td></tr>
+      <tr><td>Under 16</td><td>Born on or after 01.01.2010</td><td>20</td><td>15</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <div class="chess-info-grid">
+    <div class="chess-info">
+     <h3>Important Information</h3>
+     <ul>
+      <li>Boys and girls will compete in separate sections.</li>
+      <li>Medals and certificates for all participants.</li>
+      <li>Entry fee: ₹250.</li>
+      <li>Registration closes on 28 November 2026.</li>
+      <li>Only registered participants are allowed.</li>
+      <li><strong>NO SPOT ENTRY.</strong></li>
+     </ul>
+    </div>
+    <div class="chess-info guests">
+     <h3>Special Guests &amp; Prize Distribution</h3>
+     <p><strong>Mrs. V. P. Tamilselvi</strong><br>M.A., B.Lit.<br>MLA, Bhavanisagar</p>
+     <hr>
+     <p><strong>Mr. C. Mutharasu</strong><br>Deputy Superintendent of Police<br>Sathyamangalam</p>
+    </div>
+   </div>
+   <div class="chess-registration" id="chess-registration">
+    <h3>Contact for Registration</h3>
+    <div class="registration-contacts">
+     <p><strong>Mr. Raj</strong><a href="tel:7708363817">77083 63817</a></p>
+     <p><strong>Mr. Gowrishankar</strong><a href="tel:9677453853">96774 53853</a></p>
+     <p><strong>Mr. Sethupathi</strong><a href="tel:9994165164">99941 65164</a></p>
+    </div>
+    <p class="registration-note">Register before 28 November 2026. No spot registration.</p>
+   </div>
+  </div>
  </div>
 </section>
 <section class="section" id="contact">
@@ -137,6 +216,9 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 </section>
 </main>
 <footer><div class="wrap foot"><div><strong>🌳 TREE PEOPLE CHARITABLE TRUST</strong><br>Tribal Rural Environment and Education<br>Reg. No. 53/2022</div><div>© <span id="year"></span> Tree People Charitable Trust. All rights reserved.</div></div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));</script>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
 </body>
 </html>
