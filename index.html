@@ -101,12 +101,19 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
 .cd-msg{font-weight:750;color:var(--lime)!important;margin:10px 0 0}
 .chess-info,.chess-registration{box-shadow:0 8px 28px rgba(0,0,0,.08)}
 .map-link{display:inline-block;margin-top:6px;color:var(--green2);font-weight:800;font-size:13px}
-.ig-wrap{max-width:560px;margin:0 auto 26px}.ig-frame{width:100%;height:680px;border:0;border-radius:22px;background:#fff;box-shadow:0 8px 28px rgba(29,61,43,.08)}.ig-fallback{background:#fff;border:1px solid #e9eadf;border-radius:22px;padding:34px 25px;text-align:center}.ig-fallback .icon{margin:0 auto 14px}.ig-fallback h3{margin:0 0 6px;color:var(--green)}.ig-fallback p{margin:0;color:var(--muted);font-size:14px}
+.ig-wrap{margin:0 auto 26px}.ig-fallback{background:#fff;border:1px solid #e9eadf;border-radius:22px;padding:34px 25px;text-align:center}.ig-fallback .icon{margin:0 auto 14px}.ig-fallback h3{margin:0 0 6px;color:var(--green)}.ig-fallback p{margin:0;color:var(--muted);font-size:14px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:22px}.ig-grid:empty{display:none}
+.ig-card{background:#fff;border:1px solid #e9eadf;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 28px rgba(29,61,43,.05);transition:transform .25s}.ig-card:hover{transform:translateY(-4px)}
+.ig-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#e8efdc}
+.ig-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ig-cap{margin:0;font-size:14px;color:#43544b;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.ig-cap.open{display:block}
+.ig-meta{display:flex;justify-content:space-between;gap:10px;margin-top:auto;font-size:13px;font-weight:800}.ig-meta a,.ig-meta button{color:var(--green2);background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.ig-meta time{color:#7b887f;font-weight:650}
 #insta-widget:not(:empty){margin-top:18px}
 .totop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:0;background:var(--green);color:var(--lime);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.2);z-index:9}.totop.show{opacity:1;pointer-events:auto}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 @media print{header,.totop,.menu{display:none}.reveal{opacity:1;transform:none}}
-@media(max-width:800px){.cd{min-width:0;flex:1}
+@media(max-width:800px){.cd{min-width:0;flex:1}.ig-grid{grid-template-columns:1fr}
  nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;gap:18px;border-bottom:1px solid #e5e7dd}
  .nav.open nav{display:flex}.menu{display:block}.nav-cta{display:none}
  .hero{padding:48px 0}.hero-grid,.about-grid,.event-grid,.contact{grid-template-columns:1fr}
@@ -115,7 +122,7 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
  .chess-info-grid{grid-template-columns:1fr}.registration-contacts{grid-template-columns:1fr}
  .chess-table{min-width:560px}
 }
-@media(min-width:801px) and (max-width:1000px){nav{gap:15px}.hero-grid{gap:28px}}
+@media(min-width:801px) and (max-width:1000px){.ig-grid{grid-template-columns:1fr 1fr}nav{gap:15px}.hero-grid{gap:28px}}
 </style>
 <meta property="og:title" content="Tree People Charitable Trust">
 <meta property="og:description" content="Growing hope, caring for people and our planet. Grand Chess Tournament 2026 — 29 November, Sathyamangalam.">
@@ -240,7 +247,7 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
  <div class="wrap">
   <div class="reveal section-head"><span class="kicker">Follow along</span><h2>Latest from Instagram</h2><p>Moments from our work and events, straight from our Instagram page.</p></div>
   <div class="ig-wrap reveal">
-   <iframe class="ig-frame" id="ig-frame" data-src="https://www.instagram.com/zerowattsphotography/embed" title="Instagram posts from @zerowattsphotography" loading="lazy" scrolling="yes" allowtransparency="true" hidden></iframe>
+   <div class="ig-grid" id="ig-grid"></div>
    <div class="ig-fallback" id="ig-fallback"><div class="icon">📸</div><h3>@zerowattsphotography</h3><p>Browse our latest photos and posts on Instagram.</p></div>
    <!-- To show ALL posts as an auto-updating grid: create a free feed widget (Behold / Elfsight / SnapWidget)
         for this account, then paste its snippet inside this div. -->
@@ -256,7 +263,8 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
  </div>
 </section>
 </main>
-<footer><div class="wrap foot"><div><strong>🌳 TREE PEOPLE CHARITABLE TRUST</strong><br>Tribal Rural Environment and Education<br>Reg. No. 53/2022</div><div>© <span id="year"></span> Tree People Charitable Trust. All rights reserved.</div></div></footer>
+<footer><div class="wrap foot"><div><strong>🌳 TREE PEOPLE CHARITABLE TRUST</strong><br>Tribal Rural Environment and Education<br>Reg. No. 53/2022</div><div>© <span id="year"></span> Tree People Charitable Trust. All rights reserved.</div></div>
+   <div class="actions" style="justify-content:center"><button class="btn secondary" id="ig-more" hidden>Load more posts</button></div></footer>
 <button class="totop" id="totop" aria-label="Back to top">↑</button>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
@@ -268,8 +276,31 @@ const tt=document.getElementById('totop');tt.onclick=()=>scrollTo({top:0,behavio
 addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600),{passive:true});
 const links=[...document.querySelectorAll('nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
 if('IntersectionObserver' in window){const so=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)links.forEach((a,i)=>a.classList.toggle('active',secs[i]===x.target))}),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(el=>el&&so.observe(el))}
-const igf=document.getElementById('ig-frame');
-if(/^https?:$/.test(location.protocol)&&!/claude|anthropic/i.test(location.hostname)){igf.src=igf.dataset.src;igf.hidden=false;document.getElementById('ig-fallback').hidden=true}
+/* ===== INSTAGRAM POSTS =====
+ Option A (automatic): create a free feed at behold.so for @zerowattsphotography and paste its JSON feed URL below.
+ Option B (manual): add posts to IG_POSTS as {img:'photos/1.jpg', caption:'...', link:'https://www.instagram.com/p/XXXX/', date:'2026-11-20'} */
+const IG_FEED_URL='';
+const IG_POSTS=[];
+const IG_PROFILE='https://www.instagram.com/zerowattsphotography/';
+(function(){
+ const grid=document.getElementById('ig-grid'),more=document.getElementById('ig-more'),fb=document.getElementById('ig-fallback');let posts=[],shown=0;const STEP=9;
+ function card(p){const c=document.createElement('article');c.className='ig-card';
+  const a=document.createElement('a');a.href=p.link||IG_PROFILE;a.target='_blank';a.rel='noopener';
+  const im=document.createElement('img');im.src=p.img;im.loading='lazy';im.alt=(p.caption||'Instagram post').slice(0,100);a.appendChild(im);c.appendChild(a);
+  const b=document.createElement('div');b.className='ig-body';
+  const cap=document.createElement('p');cap.className='ig-cap';cap.textContent=p.caption||'';b.appendChild(cap);
+  const m=document.createElement('div');m.className='ig-meta';
+  if(p.date){const t=document.createElement('time');const d=new Date(p.date);if(!isNaN(d))t.textContent=d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});m.appendChild(t)}
+  const l=document.createElement('a');l.href=p.link||IG_PROFILE;l.target='_blank';l.rel='noopener';l.textContent='View on Instagram ↗';m.appendChild(l);b.appendChild(m);c.appendChild(b);
+  if((p.caption||'').length>140){const r=document.createElement('button');r.textContent='Read more';r.onclick=()=>{const o=cap.classList.toggle('open');r.textContent=o?'Show less':'Read more'};m.insertBefore(r,l)}
+  return c}
+ function render(){posts.slice(shown,shown+STEP).forEach(p=>grid.appendChild(card(p)));shown=Math.min(posts.length,shown+STEP);more.hidden=shown>=posts.length}
+ function start(list){posts=list.filter(p=>p.img);if(!posts.length)return;fb.hidden=true;render()}
+ more.onclick=render;
+ if(IG_FEED_URL){fetch(IG_FEED_URL).then(r=>r.json()).then(d=>{const arr=Array.isArray(d)?d:(d.posts||[]);
+  start(arr.map(x=>({img:(x.sizes&&x.sizes.medium&&x.sizes.medium.mediaUrl)||x.thumbnailUrl||x.mediaUrl,caption:x.caption,link:x.permalink,date:x.timestamp})))}).catch(()=>{})}
+ else start(IG_POSTS)
+})();
 const start=new Date('2026-11-29T08:45:00+05:30'),regEnd=new Date('2026-11-28T23:59:59+05:30'),msg=document.getElementById('cd-msg');
 function tick(){const n=new Date(),d=start-n;
 if(d<=0){document.getElementById('countdown').style.display='none';msg.textContent='The tournament has begun. Thank you to all participants!';return}
