@@ -101,6 +101,8 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
 .cd-msg{font-weight:750;color:var(--lime)!important;margin:10px 0 0}
 .chess-info,.chess-registration{box-shadow:0 8px 28px rgba(0,0,0,.08)}
 .map-link{display:inline-block;margin-top:6px;color:var(--green2);font-weight:800;font-size:13px}
+.ig-wrap{max-width:560px;margin:0 auto 26px}.ig-frame{width:100%;height:680px;border:0;border-radius:22px;background:#fff;box-shadow:0 8px 28px rgba(29,61,43,.08)}.ig-fallback{background:#fff;border:1px solid #e9eadf;border-radius:22px;padding:34px 25px;text-align:center}.ig-fallback .icon{margin:0 auto 14px}.ig-fallback h3{margin:0 0 6px;color:var(--green)}.ig-fallback p{margin:0;color:var(--muted);font-size:14px}
+#insta-widget:not(:empty){margin-top:18px}
 .totop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:0;background:var(--green);color:var(--lime);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.2);z-index:9}.totop.show{opacity:1;pointer-events:auto}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 @media print{header,.totop,.menu{display:none}.reveal{opacity:1;transform:none}}
@@ -127,7 +129,7 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
  <div class="wrap nav" id="nav">
   <a class="brand" href="#home"><span class="logo">🌳</span><span>TREE PEOPLE<small>CHARITABLE TRUST</small></span></a>
   <nav>
-   <a href="#home">Home</a><a href="#about">About us</a><a href="#initiatives">Our focus</a><a href="#events">Events</a><a href="#contact">Contact</a>
+   <a href="#home">Home</a><a href="#about">About us</a><a href="#initiatives">Our focus</a><a href="#events">Events</a><a href="#instagram">Instagram</a><a href="#contact">Contact</a>
   </nav>
   <a class="nav-cta" href="#contact">Get involved ↗</a>
   <button class="menu" aria-label="Toggle menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
@@ -234,6 +236,19 @@ nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
   </div>
  </div>
 </section>
+<section class="section about" id="instagram">
+ <div class="wrap">
+  <div class="reveal section-head"><span class="kicker">Follow along</span><h2>Latest from Instagram</h2><p>Moments from our work and events, straight from our Instagram page.</p></div>
+  <div class="ig-wrap reveal">
+   <iframe class="ig-frame" id="ig-frame" data-src="https://www.instagram.com/zerowattsphotography/embed" title="Instagram posts from @zerowattsphotography" loading="lazy" scrolling="yes" allowtransparency="true" hidden></iframe>
+   <div class="ig-fallback" id="ig-fallback"><div class="icon">📸</div><h3>@zerowattsphotography</h3><p>Browse our latest photos and posts on Instagram.</p></div>
+   <!-- To show ALL posts as an auto-updating grid: create a free feed widget (Behold / Elfsight / SnapWidget)
+        for this account, then paste its snippet inside this div. -->
+   <div id="insta-widget"></div>
+  </div>
+  <div class="actions" style="justify-content:center"><a class="btn" href="https://www.instagram.com/zerowattsphotography/" target="_blank" rel="noopener">View all posts on Instagram ↗</a></div>
+ </div>
+</section>
 <section class="section" id="contact">
  <div class="wrap contact">
   <div><span class="kicker">Be part of the change</span><h2>Have an idea or want to get involved?</h2><p style="color:var(--muted)">We would love to hear from volunteers, participants and well-wishers.</p></div>
@@ -253,6 +268,8 @@ const tt=document.getElementById('totop');tt.onclick=()=>scrollTo({top:0,behavio
 addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600),{passive:true});
 const links=[...document.querySelectorAll('nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
 if('IntersectionObserver' in window){const so=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)links.forEach((a,i)=>a.classList.toggle('active',secs[i]===x.target))}),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(el=>el&&so.observe(el))}
+const igf=document.getElementById('ig-frame');
+if(/^https?:$/.test(location.protocol)&&!/claude|anthropic/i.test(location.hostname)){igf.src=igf.dataset.src;igf.hidden=false;document.getElementById('ig-fallback').hidden=true}
 const start=new Date('2026-11-29T08:45:00+05:30'),regEnd=new Date('2026-11-28T23:59:59+05:30'),msg=document.getElementById('cd-msg');
 function tick(){const n=new Date(),d=start-n;
 if(d<=0){document.getElementById('countdown').style.display='none';msg.textContent='The tournament has begun. Thank you to all participants!';return}
