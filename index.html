@@ -81,13 +81,30 @@ h2{font-size:clamp(30px,4vw,45px);letter-spacing:-1.7px;line-height:1.12;color:v
 .registration-contacts p{background:#edf3e4;padding:16px;border-radius:13px;margin:0}
 .registration-contacts strong{display:block;color:#123d32;margin-bottom:7px}
 .registration-contacts a{color:#1d604b;font-weight:800}
+.registration-email{margin:18px 0 0;color:#43544b}.registration-email a{color:#1d604b;font-weight:800}
 .registration-note{color:#a51e24;font-weight:750;margin-bottom:0}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .contact-box{background:white;border:1px solid #e8eadf;border-radius:22px;padding:25px}
 .contact-box p{margin:7px 0;color:var(--muted);font-size:14px}
 footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot strong{color:white}
-@media(max-width:800px){
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--green);color:#fff;padding:10px 16px;border-radius:99px;z-index:50}.skip:focus{left:12px}
+nav a.active{color:var(--green2);box-shadow:0 2px 0 var(--orange)}
+.card{transition:transform .25s,box-shadow .25s}.card.reveal.in:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(29,61,43,.1)}
+.tree{animation:sway 6s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+.sun{animation:glow 5s ease-in-out infinite}@keyframes glow{50%{transform:scale(1.07);opacity:.8}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s,box-shadow .25s}.reveal.in{opacity:1;transform:none}
+.countdown{display:flex;gap:10px;margin:22px 0 4px}.cd{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 0;min-width:68px;text-align:center}
+.cd b{display:block;font-size:26px;color:var(--lime);line-height:1.1}.cd small{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#d2ddd4}
+.cd-msg{font-weight:750;color:var(--lime)!important;margin:10px 0 0}
+.chess-info,.chess-registration{box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.map-link{display:inline-block;margin-top:6px;color:var(--green2);font-weight:800;font-size:13px}
+.totop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:0;background:var(--green);color:var(--lime);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.2);z-index:9}.totop.show{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media print{header,.totop,.menu{display:none}.reveal{opacity:1;transform:none}}
+@media(max-width:800px){.cd{min-width:0;flex:1}
  nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;gap:18px;border-bottom:1px solid #e5e7dd}
  .nav.open nav{display:flex}.menu{display:block}.nav-cta{display:none}
  .hero{padding:48px 0}.hero-grid,.about-grid,.event-grid,.contact{grid-template-columns:1fr}
@@ -98,8 +115,14 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 }
 @media(min-width:801px) and (max-width:1000px){nav{gap:15px}.hero-grid{gap:28px}}
 </style>
+<meta property="og:title" content="Tree People Charitable Trust">
+<meta property="og:description" content="Growing hope, caring for people and our planet. Grand Chess Tournament 2026 — 29 November, Sathyamangalam.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B3%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Tree People Grand Chess Tournament 2026","startDate":"2026-11-29T08:45:00+05:30","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"Place","name":"Raghavendra School","address":"Sathyamangalam, Tamil Nadu, India"},"organizer":{"@type":"Organization","name":"Tree People Charitable Trust","email":"treepeoplestr@gmail.com"},"offers":{"@type":"Offer","price":"250","priceCurrency":"INR"}}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
  <div class="wrap nav" id="nav">
   <a class="brand" href="#home"><span class="logo">🌳</span><span>TREE PEOPLE<small>CHARITABLE TRUST</small></span></a>
@@ -110,7 +133,7 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
   <button class="menu" aria-label="Toggle menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
  </div>
 </header>
-<main>
+<main id="main">
 <section class="hero" id="home">
  <div class="wrap hero-grid">
   <div>
@@ -127,18 +150,18 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 </section>
 <section class="section" id="initiatives">
  <div class="wrap">
-  <div class="section-head"><span class="kicker">What matters to us</span><h2>Rooted in care.<br>Driven by community.</h2><p>Our focus is to encourage positive action, bring people together and create opportunities for a better future.</p></div>
+  <div class="reveal section-head"><span class="kicker">What matters to us</span><h2>Rooted in care.<br>Driven by community.</h2><p>Our focus is to encourage positive action, bring people together and create opportunities for a better future.</p></div>
   <div class="cards">
-   <article class="card"><div class="icon">🌿</div><h3>Greener communities</h3><p>Encouraging care for trees, nature and the environment through community participation.</p></article>
-   <article class="card"><div class="icon">🤝</div><h3>People helping people</h3><p>Building a culture of kindness, service and support for people in our communities.</p></article>
-   <article class="card"><div class="icon">♟️</div><h3>Learning through activities</h3><p>Creating opportunities for people to learn, connect and grow through community events.</p></article>
+   <article class="card reveal"><div class="icon">🌿</div><h3>Greener communities</h3><p>Encouraging care for trees, nature and the environment through community participation.</p></article>
+   <article class="card reveal"><div class="icon">🤝</div><h3>People helping people</h3><p>Building a culture of kindness, service and support for people in our communities.</p></article>
+   <article class="card reveal"><div class="icon">♟️</div><h3>Learning through activities</h3><p>Creating opportunities for people to learn, connect and grow through community events.</p></article>
   </div>
  </div>
 </section>
 <section class="section about" id="about">
  <div class="wrap about-grid">
   <div class="about-art"><span>Our belief</span><strong>A better tomorrow grows from what we do today.</strong><span>Tree People Charitable Trust</span></div>
-  <div class="about-copy"><span class="kicker">About the trust</span><h2>Making a difference, together.</h2><p>Tree People Charitable Trust brings people together around the values of compassion, responsibility and community spirit.</p><p>We believe meaningful change begins with awareness and grows through consistent action. Every helping hand, thoughtful idea and shared effort can make a difference.</p><p><strong>Our journey is powered by people who care.</strong></p><a class="btn" href="#contact">Connect with us</a></div>
+  <div class="reveal about-copy"><span class="kicker">About the trust</span><h2>Making a difference, together.</h2><p>Tree People Charitable Trust brings people together around the values of compassion, responsibility and community spirit.</p><p>We believe meaningful change begins with awareness and grows through consistent action. Every helping hand, thoughtful idea and shared effort can make a difference.</p><p><strong>Our journey is powered by people who care.</strong></p><a class="btn" href="#contact">Connect with us</a></div>
  </div>
 </section>
 <section class="event" id="events">
@@ -149,8 +172,10 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
     <h2>Think ahead.<br>Make your move.</h2>
     <p>Tree People Charitable Trust proudly presents the Grand Chess Tournament 2026. An exciting opportunity for young chess players to showcase their talent, strategy and sportsmanship.</p>
     <p><strong>Separate competitions for boys and girls across three age categories.</strong></p>
+    <div class="countdown" id="countdown" aria-live="polite"><div class="cd"><b id="cd-d">--</b><small>Days</small></div><div class="cd"><b id="cd-h">--</b><small>Hours</small></div><div class="cd"><b id="cd-m">--</b><small>Mins</small></div><div class="cd"><b id="cd-s">--</b><small>Secs</small></div></div>
+    <p class="cd-msg" id="cd-msg"></p>
    </div>
-   <article class="event-card">
+   <article class="reveal event-card">
     <div class="event-top"><span class="pill">Grand Chess Tournament 2026</span><span class="chess">♟️</span></div>
     <h3>Tree People Grand Chess Tournament</h3>
     <p>A celebration of intelligence, strategy and young talent.</p>
@@ -167,7 +192,7 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
   </div>
   <div class="chess-extra">
    <h3>Age Categories &amp; Prizes</h3>
-   <div class="chess-table-wrap">
+   <div class="reveal chess-table-wrap">
     <table class="chess-table">
      <thead><tr><th>Category</th><th>Date of Birth</th><th>Boys' Prizes</th><th>Girls' Prizes</th></tr></thead>
      <tbody>
@@ -196,13 +221,14 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
      <p><strong>Mr. C. Mutharasu</strong><br>Deputy Superintendent of Police<br>Sathyamangalam</p>
     </div>
    </div>
-   <div class="chess-registration" id="chess-registration">
+   <div class="reveal chess-registration" id="chess-registration">
     <h3>Contact for Registration</h3>
     <div class="registration-contacts">
      <p><strong>Mr. Raj</strong><a href="tel:7708363817">77083 63817</a></p>
      <p><strong>Mr. Gowrishankar</strong><a href="tel:9677453853">96774 53853</a></p>
      <p><strong>Mr. Sethupathi</strong><a href="tel:9994165164">99941 65164</a></p>
     </div>
+    <p class="registration-email"><strong>Email:</strong> <a href="mailto:treepeoplestr@gmail.com">treepeoplestr@gmail.com</a></p>
     <p class="registration-note">Register before 28 November 2026. No spot registration.</p>
    </div>
   </div>
@@ -211,14 +237,29 @@ footer{background:#0d2e26;color:#d6e0d8;padding:30px 0;font-size:13px}
 <section class="section" id="contact">
  <div class="wrap contact">
   <div><span class="kicker">Be part of the change</span><h2>Have an idea or want to get involved?</h2><p style="color:var(--muted)">We would love to hear from volunteers, participants and well-wishers.</p></div>
-  <div class="contact-box"><h3 style="color:var(--green);margin:0">TREE PEOPLE CHARITABLE TRUST</h3><p style="font-size:12px;font-weight:750;color:var(--green2)">TRIBAL RURAL ENVIRONMENT AND EDUCATION</p><p><strong>Address:</strong><br>230, Periyagundri,<br>Gundri, Kadambur Post,<br>Sathyamangalam Taluk,<br>Erode District, Tamil Nadu</p><p><strong>Phone:</strong> <a href="tel:9095061097">90950 61097</a> · <a href="tel:9445461097">94454 61097</a></p><p><strong>Registration Number:</strong> 53/2022</p></div>
+  <div class="reveal contact-box"><h3 style="color:var(--green);margin:0">TREE PEOPLE CHARITABLE TRUST</h3><p style="font-size:12px;font-weight:750;color:var(--green2)">TRIBAL RURAL ENVIRONMENT AND EDUCATION</p><p><strong>Address:</strong><br>230, Periyagundri,<br>Gundri, Kadambur Post,<br>Sathyamangalam Taluk,<br>Erode District, Tamil Nadu<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Periyagundri+Kadambur+Sathyamangalam+Erode" target="_blank" rel="noopener">View on map ↗</a></p><p><strong>Phone:</strong> <a href="tel:9095061097">90950 61097</a> · <a href="tel:9445461097">94454 61097</a></p><p><strong>Email:</strong> <a href="mailto:treepeoplestr@gmail.com">treepeoplestr@gmail.com</a></p><p><strong>Registration Number:</strong> 53/2022</p></div>
  </div>
 </section>
 </main>
 <footer><div class="wrap foot"><div><strong>🌳 TREE PEOPLE CHARITABLE TRUST</strong><br>Tribal Rural Environment and Education<br>Reg. No. 53/2022</div><div>© <span id="year"></span> Tree People Charitable Trust. All rights reserved.</div></div></footer>
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+
+const rv=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});rv.forEach(el=>io.observe(el))}else rv.forEach(el=>el.classList.add('in'));
+const tt=document.getElementById('totop');tt.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>600),{passive:true});
+const links=[...document.querySelectorAll('nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+if('IntersectionObserver' in window){const so=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)links.forEach((a,i)=>a.classList.toggle('active',secs[i]===x.target))}),{rootMargin:'-45% 0px -50% 0px'});secs.forEach(el=>el&&so.observe(el))}
+const start=new Date('2026-11-29T08:45:00+05:30'),regEnd=new Date('2026-11-28T23:59:59+05:30'),msg=document.getElementById('cd-msg');
+function tick(){const n=new Date(),d=start-n;
+if(d<=0){document.getElementById('countdown').style.display='none';msg.textContent='The tournament has begun. Thank you to all participants!';return}
+const p=v=>String(v).padStart(2,'0');
+document.getElementById('cd-d').textContent=Math.floor(d/864e5);document.getElementById('cd-h').textContent=p(Math.floor(d/36e5)%24);document.getElementById('cd-m').textContent=p(Math.floor(d/6e4)%60);document.getElementById('cd-s').textContent=p(Math.floor(d/1e3)%60);
+msg.textContent=n>regEnd?'Registration is now closed.':'Registration closes on 28 November 2026.'}
+tick();setInterval(tick,1000);
 </script>
 </body>
 </html>
